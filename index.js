@@ -1,46 +1,29 @@
+let myForm = document.getElementById("myForm")
+let username = document.getElementById("username")
+let useremail = document.getElementById("useremail")
+let requiredMsg  = document.getElementById("required")
+let requiredEmail  = document.getElementById("requiredEmail")
 
-
-
-let username = document.getElementById("name")
-
-
-
-let userData  = {
-    name:"hariharan",
-    city:"chennai",
-    email:"harikalam143@gmail.com"
+username.addEventListener("blur", (event)=>{
+if(event.target.value === ""){
+requiredMsg.textContent = "Required*"
+} 
+else{
+    requiredMsg.textContent = "" 
 }
-
-function netwrokCall(){
-    let option = {
-        method:"POST",
-        mode: 'no-cors',
-       
-
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-    
-          },
-        
-        body: JSON.stringify(userData)
-        
-    }
-
-    fetch("http://localhost:3003/home/user",option)
-   
-.then((response)=>{
-    return response
 })
-.then((data)=>{
-    // let {username}=data
-   
-console.log(data)
-}).catch(err => {
-    console.log('Error -', err);
-  });
-}
+
+useremail.addEventListener("blur", (event)=>{
+    if(event.target.value === ""){
+        requiredEmail.textContent = "Required*"
+    } 
+    else{
+        requiredEmail.textContent = "" 
+    }
+    })
 
 
 
-
+myForm.addEventListener("submit",(event)=>{
+event.preventDefault()
+})
